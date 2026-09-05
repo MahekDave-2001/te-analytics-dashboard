@@ -1,0 +1,7 @@
+@page { size: landscape; margin: 12mm; }
+.app-header { color: #000; background: #fff; border-bottom: 2px solid #000; }
+.header-actions, .filter-workspace, footer { display: none !important; }
+.status-strip, .subtitle { color: #222; background: #fff; }
+main { width: 100%; margin: 10px 0; }
+.landing-panel, .accordion { break-inside: avoid; box-shadow: none; }
+.accordion-content[hidden] { display: block !important; }

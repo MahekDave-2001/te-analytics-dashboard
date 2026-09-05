@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Static 2025 travel and expense analytics dashboard">
+  <title>T&E Analytics Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/print.css" media="print">
+</head>
+<body>
+  <header class="app-header">
+    <div class="header-main">
+      <div>
+        <p class="eyebrow">Finance analytics · India</p>
+        <h1>T&amp;E Analytics Dashboard</h1>
+        <p class="subtitle">2025 Consolidated Travel &amp; Expense View</p>
+      </div>
+      <div class="header-actions">
+        <label>Display unit
+          <select id="unit-selector">
+            <option value="raw">₹</option>
+            <option value="thousands">₹ Thousand</option>
+            <option value="lakhs">₹ Lakh</option>
+            <option value="crores" selected>₹ Cr</option>
+          </select>
+        </label>
+        <label>Theme
+          <select id="theme-selector">
+            <option value="light">Light</option>
+            <option value="contrast">High contrast</option>
+          </select>
+        </label>
+        <button id="reset-filters" class="button button-secondary" type="button">Reset filters</button>
+      </div>
+    </div>
+    <div class="status-strip" aria-label="Data status">
+      <span><strong>Refresh</strong> <span id="last-refresh">Loading…</span></span>
+      <span><strong>Source</strong> <span id="source-status">Checking…</span></span>
+      <span><strong>Reconciliation</strong> <span id="reconciliation-status" class="status-badge">Checking…</span></span>
+    </div>
+  </header>
+
+  <main>
+    <section id="error-banner" class="error-banner" hidden role="alert"></section>
+
+    <section class="filter-workspace">
+      <button id="filter-toggle" class="filter-toggle" type="button" aria-expanded="false" aria-controls="filter-panel">
+        <span>Global filters</span><span id="filter-summary">No active filters</span><span aria-hidden="true">⌄</span>
+      </button>
+      <div id="filter-panel" class="filter-panel" hidden>
+        <div class="filter-toolbar">
+          <div><h2>Filter workspace</h2><p>Selections apply after confirmation within each filter.</p></div>
+          <label>Saved view <select id="saved-views"><option>Current view</option></select></label>
+        </div>
+        <div id="filter-grid" class="filter-grid"></div>
+      </div>
+      <div id="active-filter-chips" class="chip-row" aria-live="polite"></div>
+    </section>
+
+    <section id="dashboard-sections" class="accordion-stack" aria-label="Dashboard sections"></section>
+
+    <section class="landing-panel reconciliation-panel" aria-labelledby="overview-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow navy">Reconciliation</p>
+          <h2 id="overview-title">Control position</h2>
+        </div>
+        <span class="section-count">Portal controls reconciled</span>
+      </div>
+      <div id="reconciliation-cards" class="metric-grid" aria-live="polite">
+        <div class="skeleton metric-card"></div><div class="skeleton metric-card"></div><div class="skeleton metric-card"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>Static browser dashboard · Source workbook remains read-only</footer>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.6.0/dist/echarts.min.js"></script>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
